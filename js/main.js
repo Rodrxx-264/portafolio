@@ -12,13 +12,14 @@
   var mensajesCarga = ['_SISTEMA_INIT_', 'Bienvenido a mi espacio.'];
 
   if (pantallaCarga) {
-    if (isMobile || prefersReducedMotion) {
+    if (isMobile || prefersReducedMotion || sessionStorage.getItem('cargaVisto')) {
       pantallaCarga.classList.add('oculta');
       document.body.style.overflow = '';
       if (textoSaludo) {
         textoSaludo.textContent = mensajesCarga[1];
       }
     } else {
+      sessionStorage.setItem('cargaVisto', '1');
       lineasCarga.forEach(function(linea) {
         var retraso = parseInt(linea.dataset.retraso) || 0;
         setTimeout(function() { linea.classList.add('visible'); }, retraso);
