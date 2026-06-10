@@ -1047,6 +1047,26 @@ button:hover .icono-svg,
   font-weight: 600;
   letter-spacing: 1px;
 }
+.proyecto__insignia {
+  font-family: var(--fuente-mono);
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+.proyecto__insignia--github {
+  color: var(--fondo);
+  background: var(--texto-brillante);
+  box-shadow: 0 0 12px rgba(255,255,255,0.2);
+}
+.proyecto__insignia--web {
+  color: var(--fondo);
+  background: var(--neon);
+  box-shadow: 0 0 12px var(--neon-tenue);
+}
 .proyecto__titulo {
   font-family: var(--fuente-display);
   font-size: 1.3rem;

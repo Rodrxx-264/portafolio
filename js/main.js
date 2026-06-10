@@ -290,7 +290,22 @@
       destacados.appendChild(li);
     });
 
-    document.getElementById('enlaceModal').href = proyecto.url;
+    var enlace = document.getElementById('enlaceModal');
+    enlace.href = proyecto.url;
+
+    var icono = document.getElementById('iconoModal');
+    var texto = document.getElementById('textoModal');
+
+    if (proyecto.type === 'website') {
+      icono.innerHTML = '<img src="https://i.allsvgicons.com/lucide/external-link.svg" class="icono-boton icono-svg" alt="">';
+      texto.textContent = 'Visitar Sitio';
+      enlace.className = 'boton boton--secundario flex-centro';
+    } else {
+      icono.innerHTML = '<img src="iconos/github.svg" class="icono-boton icono-svg" alt="">';
+      texto.textContent = 'Ver en GitHub';
+      enlace.className = 'boton boton--primario flex-centro';
+    }
+
     modal.classList.add('activa');
     document.body.style.overflow = 'hidden';
   };

@@ -369,6 +369,7 @@
         description: 'Programa tipo App Store para macOS. Interfaz centralizada para agilizar la instalación de software de terceros no disponible en la Mac App Store.',
         tech: ['Swift', 'Illustrator', 'UX Design'],
         url: 'https://github.com/Rodrxx-264/BetterStore',
+        type: 'github',
         highlights: ['Diseño y desarrollo de interfaz nativa para macOS', 'Lógica de búsqueda y acceso directo a repositorios oficiales', 'Enfoque en UX para perfiles técnicos y creativos']
       })">
         <div class="proyecto__tarjeta-interna">
@@ -376,12 +377,72 @@
             <div class="proyecto__tarjeta-degradado"></div>
             <div class="proyecto__tarjeta-top">
               <span class="proyecto__anio">2025</span>
+              <span class="proyecto__insignia proyecto__insignia--github">Repo</span>
             </div>
             <h3 class="proyecto__titulo">BetterStore</h3>
             <p class="proyecto__desc">Programa tipo App Store para macOS. Interfaz centralizada para agilizar la instalación de software de terceros no disponible en la Mac App Store.</p>
             <div class="proyecto__tecnologias">
               <span class="proyecto__tecnologia">Swift</span>
               <span class="proyecto__tecnologia">Illustrator</span>
+              <span class="proyecto__tecnologia">UX Design</span>
+            </div>
+            <div class="proyecto__pie">
+              <span class="proyecto__cta">Detalles <img src="https://i.allsvgicons.com/lucide/arrow-right.svg" class="icono-lista icono-svg" style="width:12px;height:12px;" alt="Ir a detalles"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proyecto__tarjeta" onclick="abrirProyecto({
+        title: 'PrimeTechs',
+        description: 'Landing page profesional para servicios de soporte técnico IT. Optimización, mantenimiento y recuperación de equipos Windows, macOS y Linux.',
+        tech: ['HTML', 'CSS', 'JavaScript'],
+        url: 'https://primetechs.vercel.app/',
+        type: 'website',
+        highlights: ['Diseño y desarrollo de landing page completa', 'Integración con WhatsApp API', 'Secciones: servicios, blog, descargas, contacto', 'Soporte multi-plataforma (Windows/macOS/Linux)', 'Diseño responsivo y optimizado para conversión']
+      })">
+        <div class="proyecto__tarjeta-interna">
+          <div class="proyecto__tarjeta-cara">
+            <div class="proyecto__tarjeta-degradado"></div>
+            <div class="proyecto__tarjeta-top">
+              <span class="proyecto__anio">2025</span>
+              <span class="proyecto__insignia proyecto__insignia--web">Web</span>
+            </div>
+            <h3 class="proyecto__titulo">PrimeTechs</h3>
+            <p class="proyecto__desc">Landing page profesional para servicios de soporte técnico IT. Optimización, mantenimiento y recuperación de equipos multi-plataforma.</p>
+            <div class="proyecto__tecnologias">
+              <span class="proyecto__tecnologia">HTML</span>
+              <span class="proyecto__tecnologia">CSS</span>
+              <span class="proyecto__tecnologia">JavaScript</span>
+            </div>
+            <div class="proyecto__pie">
+              <span class="proyecto__cta">Detalles <img src="https://i.allsvgicons.com/lucide/arrow-right.svg" class="icono-lista icono-svg" style="width:12px;height:12px;" alt="Ir a detalles"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proyecto__tarjeta" onclick="abrirProyecto({
+        title: 'Ascentio Digital',
+        description: 'Agencia de landing pages de alta conversión. Sitio web completo con planes de inversión, metodología modular, portafolio de demos y multi-idioma (ES/EN).',
+        tech: ['HTML', 'CSS', 'JavaScript', 'UX Design'],
+        url: 'https://ascentiodigital.vercel.app/',
+        type: 'website',
+        highlights: ['Agencia completa con 4 planes de inversión', 'Metodología de 4 fases documentada', 'Galería de 8 demos por sector', 'Multi-idioma (Español/Inglés)', 'SEO optimizado y diseño Mobile First', 'Blog integrado con artículos técnicos']
+      })">
+        <div class="proyecto__tarjeta-interna">
+          <div class="proyecto__tarjeta-cara">
+            <div class="proyecto__tarjeta-degradado"></div>
+            <div class="proyecto__tarjeta-top">
+              <span class="proyecto__anio">2026</span>
+              <span class="proyecto__insignia proyecto__insignia--web">Web</span>
+            </div>
+            <h3 class="proyecto__titulo">Ascentio Digital</h3>
+            <p class="proyecto__desc">Agencia de landing pages de alta conversión. Sitio completo con planes, metodología, portafolio de demos y multi-idioma.</p>
+            <div class="proyecto__tecnologias">
+              <span class="proyecto__tecnologia">HTML</span>
+              <span class="proyecto__tecnologia">CSS</span>
+              <span class="proyecto__tecnologia">JavaScript</span>
               <span class="proyecto__tecnologia">UX Design</span>
             </div>
             <div class="proyecto__pie">
@@ -405,7 +466,8 @@
       <div class="ventana-modal__tecnologias" id="tecnologiasModal"></div>
       <ul class="ventana-modal__destacados lista-estilizada" id="destacadosModal"></ul>
       <a href="#" class="boton boton--primario flex-centro" id="enlaceModal" target="_blank" rel="noopener">
-        <img src="iconos/github.svg" class="icono-boton icono-svg" alt="GitHub logo"> Ver en GitHub
+        <span id="iconoModal"><img src="iconos/github.svg" class="icono-boton icono-svg" alt=""></span>
+        <span id="textoModal">Ver en GitHub</span>
       </a>
     </div>
   </div>
