@@ -1,0 +1,22 @@
+{
+  "name": "Rodrigo Imeri — Portfolio",
+  "short_name": "Rodridev",
+  "description": "Portfolio profesional de Rodrigo Imeri, Técnico IT & Desarrollador Web",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06060a",
+  "theme_color": "#00ffcc",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}

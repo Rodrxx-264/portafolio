@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rodrigoimeri.dev/sitemap.xml
+Sitemap: https://rodrii.pages.dev/sitemap.xml
