@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rodrigo Imeri — Estudiante de Ingeniería en Sistemas</title>
+<meta name="description" content="Portfolio de Rodrigo Imeri, Estudiante de Ingeniería en Sistemas. Especialista en infraestructura IT, soporte técnico y desarrollo web.">
+<meta name="keywords" content="rodrigo imeri, portfolio, IT, sistemas, soporte técnico, desarrollo web, guatemala">
+<meta name="author" content="Rodrigo Imeri">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="Rodrigo Imeri — Estudiante de Ingeniería en Sistemas">
+<meta property="og:description" content="Portfolio profesional de Rodrigo Imeri. IT Technician &amp; Web Developer.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_GT">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rodrigo Imeri",
+  "jobTitle": "Estudiante de Ingeniería en Sistemas",
+  "description": "Estudiante de Ingeniería en Sistemas apasionado por la infraestructura IT y el soporte técnico.",
+  "email": "imerirodrigo@hotmail.com",
+  "telephone": "+502 5995-5937",
+  "sameAs": [
+    "https://github.com/Rodrxx-264",
+    "https://www.linkedin.com/in/rodrigo-imeri/",
+    "https://x.com/Rodrippm",
+    "https://primetechs.vercel.app/",
+    "https://novaadigital.netlify.app/"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x2B22;</text></svg>">
+</head>
+<body>
+
+<div id="barraProgreso"></div>
+
+<div class="pantalla-carga" id="pantallaCarga">
+  <div class="pantalla-carga__contenido">
+    <div class="pantalla-carga__linea visible" data-retraso="300"><span class="pantalla-carga__flecha">&gt;</span> Inicializando núcleo del portafolio...</div>
+    <div class="pantalla-carga__linea" data-retraso="800"><span class="pantalla-carga__flecha">&gt;</span> Cargando perfil de usuario...</div>
+    <div class="pantalla-carga__linea pantalla-carga__ok" data-retraso="1600"><span class="pantalla-carga__flecha">&gt;</span> [OK] Identidad verificada: <span class="pantalla-carga__resaltado">Rodrigo Imeri</span></div>
+    <div class="pantalla-carga__linea" data-retraso="2400"><span class="pantalla-carga__flecha">&gt;</span> Estableciendo conexión segura...</div>
+    <div class="pantalla-carga__linea pantalla-carga__ok" data-retraso="3000"><span class="pantalla-carga__flecha">&gt;</span> [OK] Handshake completado</div>
+    <div class="pantalla-carga__linea pantalla-carga__acceso" data-retraso="3600"><span class="pantalla-carga__flecha">&gt;</span> [SISTEMA] Acceso concedido.</div>
+    <div class="pantalla-carga__linea-cursor" data-retraso="4200"><span class="pantalla-carga__prompt">invitado@portafolio</span>:<span class="pantalla-carga__ruta">~</span>$ <span class="pantalla-carga__texto-tipeado" id="textoCarga"></span><span class="pantalla-carga__cursor">█</span></div>
+  </div>
+</div>
+
+<nav class="barra-navegacion" id="barraNavegacion">
+  <div class="barra-navegacion__logo">&lt;<span class="barra-navegacion__acento">RI</span>/&gt;</div>
+  <div class="barra-navegacion__enlaces" id="enlacesNavegacion">
+    <a href="#inicio" class="barra-navegacion__enlace activo" data-seccion="inicio">Inicio</a>
+    <a href="#sobre-mi" class="barra-navegacion__enlace" data-seccion="sobre-mi">Perfil</a>
+    <a href="#habilidades" class="barra-navegacion__enlace" data-seccion="habilidades">Habilidades</a>
+    <a href="#experiencia" class="barra-navegacion__enlace" data-seccion="experiencia">Experiencia</a>
+    <a href="#proyectos" class="barra-navegacion__enlace" data-seccion="proyectos">Proyectos</a>
+    <a href="#educacion" class="barra-navegacion__enlace" data-seccion="educacion">Educación</a>
+    <a href="#contacto" class="barra-navegacion__enlace" data-seccion="contacto">Contacto</a>
+  </div>
+  <button class="barra-navegacion__menu-movil" id="botonMenu" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main>
+
+<section class="inicio seccion" id="inicio">
+  <div class="inicio__degradado"></div>
+  <canvas id="lienzoParticulas" class="inicio__lienzo"></canvas>
+  <div class="inicio__contenido">
+    <p class="inicio__saludo">&gt; <span class="inicio__saludo-texto" id="textoSaludo"></span></p>
+    <h1 class="inicio__nombre" data-texto="Rodrigo Imeri" id="nombrePrincipal">Rodrigo Imeri</h1>
+    <p class="inicio__titulo" id="tituloInicio">Estudiante de Ingeniería en Sistemas</p>
+    <div class="inicio__roles" id="rolesInicio">
+      <span class="inicio__rol activo">Soporte Técnico IT</span>
+      <span class="inicio__rol">Desarrollador Web</span>
+      <span class="inicio__rol">Ingeniero en Sistemas</span>
+    </div>
+    <div class="inicio__redes">
+      <a href="https://github.com/Rodrxx-264" target="_blank" rel="noopener" aria-label="GitHub" class="inicio__enlace-red"><img src="iconos/github.svg" class="icono-svg" alt="GitHub"></a>
+      <a href="https://x.com/Rodrippm" target="_blank" rel="noopener" aria-label="X" class="inicio__enlace-red"><img src="https://i.allsvgicons.com/lucide/twitter.svg" class="icono-svg" alt="X"></a>
+      <a href="https://www.linkedin.com/in/rodrigo-imeri/" target="_blank" rel="noopener" aria-label="LinkedIn" class="inicio__enlace-red"><img src="iconos/linkedin.svg" class="icono-svg" alt="LinkedIn"></a>
+    </div>
+    <div class="inicio__acciones">
+      <a href="#contacto" class="boton boton--primario">
+        <img src="iconos/email.svg" class="icono-boton icono-svg" alt="Mail"> Contáctame
+      </a>
+      <a href="#proyectos" class="boton boton--secundario">Ver proyectos</a>
+    </div>
+    <div class="inicio__estado">
+      <span class="inicio__estado-punto"></span>
+      <span class="inicio__estado-texto">Disponible para proyectos</span>
+    </div>
+    <div class="inicio__metricas" id="contenedorMetricas">
+      <div class="inicio__metrica">
+        <span class="inicio__metrica-valor">3+</span>
+        <span class="inicio__metrica-etiqueta">Años Exp.</span>
+      </div>
+      <div class="inicio__metrica">
+        <span class="inicio__metrica-valor">3</span>
+        <span class="inicio__metrica-etiqueta">Sistemas Op.</span>
+      </div>
+      <div class="inicio__metrica">
+        <span class="inicio__metrica-valor">10+</span>
+        <span class="inicio__metrica-etiqueta">Habilidades</span>
+      </div>
+    </div>
+  </div>
+  <div class="inicio__scroll">
+    <span>SCROLL</span>
+    <div class="inicio__scroll-indicador"></div>
+    <span>↓</span>
+  </div>
+  <div class="inicio__esquina inicio__esquina--si"></div>
+  <div class="inicio__esquina inicio__esquina--sd"></div>
+  <div class="inicio__esquina inicio__esquina--ii"></div>
+  <div class="inicio__esquina inicio__esquina--id"></div>
+</section>
+
+<section class="sobre-mi seccion" id="sobre-mi">
+  <div class="contenedor">
+    <h2 class="seccion__titulo"><span class="seccion__etiqueta">&lt;perfil&gt;</span><span class="seccion__texto-titulo">Sobre Mí</span><span class="seccion__linea"></span></h2>
+    <div class="sobre-mi__cuadricula">
+      <div class="sobre-mi__texto animar-aparicion">
+        <p>Estudiante de Ingeniería en Sistemas apasionado por la infraestructura IT y el soporte técnico. Experiencia comprobada en entornos multi-plataforma (Windows/macOS/Linux) y optimización de sistemas. Especializado en la resolución proactiva de incidencias y la implementación de herramientas de IA para maximizar la productividad técnica.</p>
+        <div class="sobre-mi__estadisticas">
+          <div class="sobre-mi__estat tarjeta-cristal hover-neon">
+            <span class="sobre-mi__estat-numero texto-brillante" data-contado="true">2+</span>
+            <span class="sobre-mi__estat-etiqueta">Años de trayectoria</span>
+          </div>
+          <div class="sobre-mi__estat tarjeta-cristal hover-neon">
+            <span class="sobre-mi__estat-numero texto-brillante" data-contado="true">28</span>
+            <span class="sobre-mi__estat-etiqueta">Skills técnicas</span>
+          </div>
+          <div class="sobre-mi__estat tarjeta-cristal hover-neon">
+            <span class="sobre-mi__estat-numero texto-brillante" data-contado="true">3</span>
+            <span class="sobre-mi__estat-etiqueta">Sistemas operativos</span>
+          </div>
+          <div class="sobre-mi__estat tarjeta-cristal hover-neon">
+            <span class="sobre-mi__estat-numero texto-brillante" data-contado="true">3</span>
+            <span class="sobre-mi__estat-etiqueta">Proyectos realizados</span>
+          </div>
+        </div>
+      </div>
+      <div class="sobre-mi__terminal animar-aparicion">
+        <div class="terminal__encabezado">
+          <span class="terminal__punto terminal__punto--rojo"></span>
+          <span class="terminal__punto terminal__punto--amarillo"></span>
+          <span class="terminal__punto terminal__punto--verde"></span>
+          <span class="terminal__titulo">perfil.sh &mdash; zsh</span>
+          <span class="terminal__accion"><img src="https://i.allsvgicons.com/lucide/x.svg" class="icono-svg icono-cerrar" alt="Cerrar"></span>
+        </div>
+        <div class="terminal__cuerpo">
+          <div class="terminal__linea"><span class="terminal__prompt">$&gt;</span> <span class="terminal__comando">cat perfil.txt</span></div>
+          <div class="terminal__linea"><span class="terminal__salida"><span class="terminal__clave">Nombre     </span> Rodrigo Imeri</span></div>
+          <div class="terminal__linea"><span class="terminal__salida"><span class="terminal__clave">Rol        </span> Estudiante de Ingeniería en Sistemas</span></div>
+          <div class="terminal__linea"><span class="terminal__salida"><span class="terminal__clave">Email      </span> <a href="mailto:imerirodrigo@hotmail.com" class="terminal__enlace">imerirodrigo@hotmail.com</a></span></div>
+          <div class="terminal__linea"><span class="terminal__salida"><span class="terminal__clave">Tel        </span> +502 5995-5937</span></div>
+          <div class="terminal__linea"><span class="terminal__salida"><span class="terminal__clave">GitHub     </span> <a href="https://github.com/Rodrxx-264" target="_blank" class="terminal__enlace">Rodrxx-264</a></span></div>
+          <div class="terminal__linea"><span class="terminal__salida"><span class="terminal__clave">LinkedIn   </span> <a href="https://www.linkedin.com/in/rodrigo-imeri/" target="_blank" class="terminal__enlace">rodrigo-imeri</a></span></div>
+          <div class="terminal__linea terminal__linea--cursor"><span class="terminal__prompt">$&gt;</span> <span class="terminal__cursor">&#x2588;</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="habilidades seccion" id="habilidades">
+  <div class="contenedor">
+    <h2 class="seccion__titulo"><span class="seccion__etiqueta">&lt;habilidades&gt;</span><span class="seccion__texto-titulo">Competencias</span><span class="seccion__linea"></span></h2>
+    <p class="seccion__descripcion animar-aparicion">Conocimientos técnicos y capacidades interpersonales.</p>
+    
+    <div class="habilidades__grid-estatico grid-2-cols animar-aparicion">
+      <div class="habilidades__lista-estatica tarjeta-cristal">
+        <h3 class="conocimientos__titulo">Habilidades Generales</h3>
+        <ul class="lista-estilizada" style="margin-top: 16px;">
+          <li>Soporte / Troubleshooting</li>
+          <li>Windows / macOS / Linux</li>
+          <li>Redes TCP/IP & VPN</li>
+          <li>Hardware & Ensamblaje</li>
+          <li>HTML5 / CSS3</li>
+          <li>Swift & C++</li>
+          <li>Bases de Datos (MySQL)</li>
+          <li>Prompt Engineering</li>
+          <li>Atención al Cliente</li>
+          <li>Inglés Técnico B1</li>
+        </ul>
+      </div>
+
+      <div class="habilidades__conocimientos">
+        <h3 class="conocimientos__titulo" style="margin-bottom: 16px;">Mapa de Tecnologías</h3>
+        <div class="conocimientos__cuadricula">
+          <div class="conocimientos__tarjeta tarjeta-cristal hover-neon">
+            <div class="conocimientos__encabezado-tarjeta">
+              <h4 class="conocimientos__cat">OS</h4>
+            </div>
+            <ul class="conocimientos__lista lista-estilizada">
+              <li><img src="iconos/windows.svg" class="icono-lista icono-svg" alt=""> Windows 10/11</li>
+              <li><img src="iconos/apple.svg" class="icono-lista icono-svg" alt=""> macOS</li>
+              <li><img src="iconos/linux.svg" class="icono-lista icono-svg" alt=""> Linux</li>
+            </ul>
+          </div>
+          
+          <div class="conocimientos__tarjeta tarjeta-cristal hover-neon">
+            <div class="conocimientos__encabezado-tarjeta">
+              <h4 class="conocimientos__cat">Redes</h4>
+            </div>
+            <ul class="conocimientos__lista lista-estilizada">
+              <li><img src="https://i.allsvgicons.com/lucide/network.svg" class="icono-lista icono-svg" alt=""> TCP/IP & VPN</li>
+              <li><img src="https://i.allsvgicons.com/lucide/server.svg" class="icono-lista icono-svg" alt=""> Routers & DHCP</li>
+            </ul>
+          </div>
+          
+          <div class="conocimientos__tarjeta tarjeta-cristal hover-neon">
+            <div class="conocimientos__encabezado-tarjeta">
+              <h4 class="conocimientos__cat">Desarrollo</h4>
+            </div>
+            <ul class="conocimientos__lista lista-estilizada">
+              <li><img src="iconos/html.svg" class="icono-lista icono-svg" alt=""> HTML5</li>
+              <li><img src="iconos/css.svg" class="icono-lista icono-svg" alt=""> CSS3</li>
+              <li><img src="iconos/github.svg" class="icono-lista icono-svg" alt=""> Git/GitHub</li>
+              <li><img src="https://i.allsvgicons.com/tabler/brand-swift.svg" class="icono-lista icono-svg" alt=""> Swift</li>
+              <li><img src="https://i.allsvgicons.com/tabler/brand-cpp.svg" class="icono-lista icono-svg" alt=""> C++</li>
+            </ul>
+          </div>
+          
+          <div class="conocimientos__tarjeta tarjeta-cristal hover-neon">
+            <div class="conocimientos__encabezado-tarjeta">
+              <h4 class="conocimientos__cat">Hardware & BD</h4>
+            </div>
+            <ul class="conocimientos__lista lista-estilizada">
+              <li><img src="https://i.allsvgicons.com/lucide/cpu.svg" class="icono-lista icono-svg" alt=""> Arquitectura HW</li>
+              <li><img src="https://i.allsvgicons.com/lucide/wrench.svg" class="icono-lista icono-svg" alt=""> Mantenimiento</li>
+              <li><img src="https://i.allsvgicons.com/lucide/database.svg" class="icono-lista icono-svg" alt=""> MySQL</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="experiencia seccion" id="experiencia">
+  <div class="contenedor">
+    <h2 class="seccion__titulo"><span class="seccion__etiqueta">&lt;experiencia&gt;</span><span class="seccion__texto-titulo">Trayectoria Profesional</span><span class="seccion__linea"></span></h2>
+    <p class="seccion__descripcion animar-aparicion">Desliza horizontalmente para navegar por mi experiencia laboral.</p>
+  </div>
+  <div class="linea-tiempo__envoltura animar-aparicion" id="envolturaLineaTiempo">
+    <div class="linea-tiempo__pista" id="pistaLineaTiempo">
+      <div class="linea-tiempo__linea" id="barraLineaTiempo"></div>
+      
+      <div class="linea-tiempo__nodo">
+        <div class="linea-tiempo__punto"><div class="linea-tiempo__punto-interno"></div></div>
+        <div class="linea-tiempo__tarjeta">
+          <div class="linea-tiempo__tarjeta-resplandor"></div>
+          <div class="linea-tiempo__encabezado">
+            <span class="linea-tiempo__anio">Actualidad</span>
+          </div>
+          <h3 class="linea-tiempo__rol">Técnico IT Freelancer</h3>
+          <p class="linea-tiempo__empresa">PrimeTechs <a href="https://primetechs.vercel.app/" target="_blank" class="linea-tiempo__enlace"><img src="https://i.allsvgicons.com/lucide/external-link.svg" class="icono-svg" style="width:12px;height:12px;" alt=""></a></p>
+          <ul class="linea-tiempo__desc">
+            <li>Asistencia a usuarios con problemas de software y configuración</li>
+            <li>Instalación de programas y herramientas de productividad</li>
+            <li>Optimización de equipos lentos</li>
+            <li>Configuración de sistemas Windows y macOS</li>
+            <li>Solución remota de incidencias comunes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="linea-tiempo__nodo">
+        <div class="linea-tiempo__punto"><div class="linea-tiempo__punto-interno"></div></div>
+        <div class="linea-tiempo__tarjeta">
+          <div class="linea-tiempo__tarjeta-resplandor"></div>
+          <div class="linea-tiempo__encabezado">
+            <span class="linea-tiempo__anio">Actualidad</span>
+          </div>
+          <h3 class="linea-tiempo__rol">Desarrollador Web Freelancer</h3>
+          <p class="linea-tiempo__empresa">Nova Digital <a href="https://novaadigital.netlify.app/" target="_blank" class="linea-tiempo__enlace"><img src="https://i.allsvgicons.com/lucide/external-link.svg" class="icono-svg" style="width:12px;height:12px;" alt=""></a></p>
+          <ul class="linea-tiempo__desc">
+            <li>Diseño y desarrollo de landing pages con HTML y CSS</li>
+            <li>Implementación de estructuras optimizadas para captación de clientes</li>
+            <li>Uso de IA como apoyo en generación de contenido y optimización</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="linea-tiempo__nodo">
+        <div class="linea-tiempo__punto"><div class="linea-tiempo__punto-interno"></div></div>
+        <div class="linea-tiempo__tarjeta">
+          <div class="linea-tiempo__tarjeta-resplandor"></div>
+          <div class="linea-tiempo__encabezado">
+            <span class="linea-tiempo__anio">2025</span>
+          </div>
+          <h3 class="linea-tiempo__rol">Auxiliar de Cuentas por Cobrar</h3>
+          <p class="linea-tiempo__empresa">Industrias Bolik S.A</p>
+          <ul class="linea-tiempo__desc">
+            <li>Registro y control de cuentas por cobrar</li>
+            <li>Organización y revisión de documentación contable</li>
+            <li>Seguimiento administrativo de registros financieros</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="proyectos seccion" id="proyectos">
+  <div class="contenedor">
+    <h2 class="seccion__titulo"><span class="seccion__etiqueta">&lt;proyectos&gt;</span><span class="seccion__texto-titulo">Mis Proyectos</span><span class="seccion__linea"></span></h2>
+    <p class="seccion__descripcion animar-aparicion">Trabajos destacados — Clic para más detalles</p>
+    <div class="proyectos__cuadricula" id="cuadriculaProyectos">
+      
+      <div class="proyecto__tarjeta" onclick="abrirProyecto({
+        title: 'BetterStore',
+        description: 'Programa tipo App Store para macOS. Interfaz centralizada para agilizar la instalación de software de terceros no disponible en la Mac App Store.',
+        tech: ['Swift', 'Illustrator', 'UX Design'],
+        url: 'https://github.com/Rodrxx-264/BetterStore',
+        highlights: ['Diseño y desarrollo de interfaz nativa para macOS', 'Lógica de búsqueda y acceso directo a repositorios oficiales', 'Enfoque en UX para perfiles técnicos y creativos']
+      })">
+        <div class="proyecto__tarjeta-interna">
+          <div class="proyecto__tarjeta-cara">
+            <div class="proyecto__tarjeta-degradado"></div>
+            <div class="proyecto__tarjeta-top">
+              <span class="proyecto__anio">2025</span>
+            </div>
+            <h3 class="proyecto__titulo">BetterStore</h3>
+            <p class="proyecto__desc">Programa tipo App Store para macOS. Interfaz centralizada para agilizar la instalación de software de terceros no disponible en la Mac App Store.</p>
+            <div class="proyecto__tecnologias">
+              <span class="proyecto__tecnologia">Swift</span>
+              <span class="proyecto__tecnologia">Illustrator</span>
+              <span class="proyecto__tecnologia">UX Design</span>
+            </div>
+            <div class="proyecto__pie">
+              <span class="proyecto__cta">Detalles <img src="https://i.allsvgicons.com/lucide/arrow-right.svg" class="icono-lista icono-svg" style="width:12px;height:12px;" alt=""></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="ventana-modal" id="modalProyecto">
+  <div class="ventana-modal__capa" id="cierreCapaModal"></div>
+  <div class="ventana-modal__contenido tarjeta-cristal">
+    <button class="ventana-modal__cerrar flex-centro" id="botonCerrarModal"><img src="https://i.allsvgicons.com/lucide/x.svg" class="icono-svg" alt=""></button>
+    <div class="ventana-modal__cuerpo" id="cuerpoModal">
+      <h2 class="ventana-modal__titulo texto-brillante" id="tituloModal"></h2>
+      <p class="ventana-modal__descripcion" id="descripcionModal"></p>
+      <div class="ventana-modal__tecnologias" id="tecnologiasModal"></div>
+      <ul class="ventana-modal__destacados lista-estilizada" id="destacadosModal"></ul>
+      <a href="#" class="boton boton--primario flex-centro" id="enlaceModal" target="_blank" rel="noopener">
+        <img src="iconos/github.svg" class="icono-boton icono-svg" alt=""> Ver en GitHub
+      </a>
+    </div>
+  </div>
+</div>
+
+<section class="educacion seccion" id="educacion">
+  <div class="contenedor">
+    <h2 class="seccion__titulo"><span class="seccion__etiqueta">&lt;educación&gt;</span><span class="seccion__texto-titulo">Formación Académica</span><span class="seccion__linea"></span></h2>
+    <div class="educacion__linea-tiempo" id="listaEducacion">
+      <div class="educacion__barra"></div>
+      
+      <div class="educacion__entrada">
+        <div class="educacion__punto"><div class="educacion__punto-interno"></div></div>
+        <div class="educacion__tarjeta tarjeta-cristal hover-neon">
+          <div class="educacion__encabezado">
+            <span class="educacion__anio">2026 - 2030</span>
+          </div>
+          <h3 class="educacion__grado">Ingeniería en Sistemas de Información y Cs. de la Computación</h3>
+          <p class="educacion__institucion">Universidad Mariano Gálvez</p>
+        </div>
+      </div>
+
+      <div class="educacion__entrada">
+        <div class="educacion__punto"><div class="educacion__punto-interno"></div></div>
+        <div class="educacion__tarjeta tarjeta-cristal hover-neon">
+          <div class="educacion__encabezado">
+            <span class="educacion__anio">2023 - 2025</span>
+          </div>
+          <h3 class="educacion__grado">Perito en Administración de Empresas</h3>
+          <p class="educacion__institucion">Centro Cultural Sagrada Familia No.1</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="contacto seccion" id="contacto">
+  <div class="contenedor">
+    <h2 class="seccion__titulo"><span class="seccion__etiqueta">&lt;contacto&gt;</span><span class="seccion__texto-titulo">Contacto</span><span class="seccion__linea"></span></h2>
+    <p class="seccion__descripcion animar-aparicion">¿Tienes un proyecto o vacante en mente? Hablemos.</p>
+    <div class="contacto__cuadricula animar-aparicion grid-2-cols">
+      <div class="contacto__terminal">
+        <div class="terminal__encabezado">
+          <span class="terminal__punto terminal__punto--rojo"></span>
+          <span class="terminal__punto terminal__punto--amarillo"></span>
+          <span class="terminal__punto terminal__punto--verde"></span>
+          <span class="terminal__titulo">contacto.sh &mdash; /dev/tty</span>
+          <span class="terminal__accion"><img src="https://i.allsvgicons.com/lucide/x.svg" class="icono-svg icono-cerrar" alt="Cerrar"></span>
+        </div>
+        <div class="terminal__cuerpo">
+          <div class="terminal__linea"><span class="terminal__prompt">$&gt;</span> <span class="terminal__comando">./enviar_mensaje.sh &mdash;para rodrigo</span></div>
+          <form class="contacto__formulario" id="formularioContacto">
+            <div class="formulario__grupo flex-inicio">
+              <span class="terminal__prompt">&gt;</span>
+              <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="formNombre">nombre</label>
+                <input type="text" class="formulario__entrada" id="formNombre" required placeholder="tu nombre" autocomplete="name">
+              </div>
+            </div>
+            <div class="formulario__grupo flex-inicio">
+              <span class="terminal__prompt">&gt;</span>
+              <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="formEmail">email</label>
+                <input type="email" class="formulario__entrada" id="formEmail" required placeholder="tu@email.com" autocomplete="email">
+              </div>
+            </div>
+            <div class="formulario__grupo flex-inicio">
+              <span class="terminal__prompt">&gt;</span>
+              <div class="formulario__campo">
+                <label class="formulario__etiqueta" for="formMensaje">mensaje</label>
+                <textarea class="formulario__entrada formulario__area-texto" id="formMensaje" required placeholder="escribe tu mensaje..."></textarea>
+              </div>
+            </div>
+            <div class="formulario__grupo formulario__grupo--acciones flex-centro">
+              <span class="terminal__prompt">$</span>
+              <button type="submit" class="boton boton--primario formulario__enviar" id="botonEnviar">
+                <span class="formulario__enviar-texto">./enviar &mdash;ejecutar</span>
+                <span class="formulario__enviar-carga" style="display:none;">procesando...</span>
+              </button>
+              <span class="formulario__estado" id="estadoFormulario"></span>
+            </div>
+          </form>
+          <div class="terminal__linea terminal__linea--cursor"><span class="terminal__prompt">$&gt;</span> <span class="terminal__cursor">&#x2588;</span></div>
+        </div>
+      </div>
+      <div class="contacto__informacion">
+        <div class="contacto__tarjeta tarjeta-cristal">
+          <div class="contacto__encabezado">Información de Contacto</div>
+          <div class="contacto__item flex-centro-v">
+            <img src="iconos/email.svg" class="contacto__icono icono-svg" alt="">
+            <div><span class="contacto__etiqueta">Email</span><a href="mailto:imerirodrigo@hotmail.com" class="contacto__valor">imerirodrigo@hotmail.com</a></div>
+          </div>
+          <div class="contacto__item flex-centro-v">
+            <img src="iconos/telefono.svg" class="contacto__icono icono-svg" alt="">
+            <div><span class="contacto__etiqueta">Teléfono</span><span class="contacto__valor">+502 5995-5937</span></div>
+          </div>
+          <div class="contacto__redes flex-inicio">
+            <a href="https://github.com/Rodrxx-264" target="_blank" rel="noopener" class="contacto__enlace-red flex-centro" aria-label="GitHub"><img src="iconos/github.svg" class="icono-svg" alt=""></a>
+            <a href="https://www.linkedin.com/in/rodrigo-imeri/" target="_blank" rel="noopener" class="contacto__enlace-red flex-centro" aria-label="LinkedIn"><img src="iconos/linkedin.svg" class="icono-svg" alt=""></a>
+            <a href="https://x.com/Rodrippm" target="_blank" rel="noopener" class="contacto__enlace-red flex-centro" aria-label="X"><img src="https://i.allsvgicons.com/lucide/twitter.svg" class="icono-svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="pie-pagina">
+  <div class="pie-pagina__contenedor flex-col-centro">
+    <div class="pie-pagina__enlaces flex-centro">
+      <a href="https://github.com/Rodrxx-264" target="_blank" rel="noopener" class="pie-pagina__enlace flex-centro" aria-label="GitHub"><img src="iconos/github.svg" class="icono-svg" alt=""></a>
+      <a href="https://www.linkedin.com/in/rodrigo-imeri/" target="_blank" rel="noopener" class="pie-pagina__enlace flex-centro" aria-label="LinkedIn"><img src="iconos/linkedin.svg" class="icono-svg" alt=""></a>
+      <a href="https://x.com/Rodrippm" target="_blank" rel="noopener" class="pie-pagina__enlace flex-centro" aria-label="X"><img src="https://i.allsvgicons.com/lucide/twitter.svg" class="icono-svg" alt=""></a>
+      <a href="mailto:imerirodrigo@hotmail.com" class="pie-pagina__enlace flex-centro" aria-label="Email"><img src="iconos/email.svg" class="icono-svg" alt=""></a>
+    </div>
+    <p class="pie-pagina__copia flex-centro-v">
+      <span class="pie-pagina__prompt">$&gt;</span>
+      <span class="pie-pagina__comando">echo "&copy; 2026 &mdash; Rodrigo Imeri. Todos los derechos reservados"</span>
+      <span class="pie-pagina__cursor">&#x2588;</span>
+    </p>
+  </div>
+</footer>
+
+<button class="volver-arriba flex-centro" id="botonVolverArriba" aria-label="Volver arriba">
+  <img src="https://i.allsvgicons.com/lucide/chevron-up.svg" class="icono-svg" alt="Up">
+</button>
+
+<div class="atajos-teclado" id="pistaAtajos">
+  <div class="atajos-teclado__titulo">⌨ Atajos de Teclado</div>
+  <span class="atajos-teclado__tecla">1</span> Inicio<br>
+  <span class="atajos-teclado__tecla">2</span> Perfil<br>
+  <span class="atajos-teclado__tecla">3</span> Habilidades<br>
+  <span class="atajos-teclado__tecla">4</span> Experiencia<br>
+  <span class="atajos-teclado__tecla">5</span> Proyectos<br>
+  <span class="atajos-teclado__tecla">6</span> Educación<br>
+  <span class="atajos-teclado__tecla">7</span> Contacto<br>
+  <span class="atajos-teclado__tecla">?</span> alternar vista
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/timeline.js"></script>
+<script src="js/projects.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
