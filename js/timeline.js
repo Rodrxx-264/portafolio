@@ -1,57 +1,61 @@
 window.addEventListener('datosCargados', function() {
-  const envoltura = document.getElementById('envolturaLineaTiempo');
-  const pista = document.getElementById('pistaLineaTiempo');
+  var envoltura = document.getElementById('envolturaLineaTiempo');
+  var pista = document.getElementById('pistaLineaTiempo');
   if (!envoltura || !pista) return;
 
-  let arrastrando = false;
-  let startX, scrollLeft;
+  var arrastrando = false;
+  var startX, scrollLeft;
 
-  envoltura.addEventListener('mousedown', (e) => {
+  var empezarArrastre = function(e) {
     arrastrando = true;
-    startX = e.pageX - envoltura.offsetLeft;
+    startX = ('touches' in e ? e.touches[0].pageX : e.pageX) - envoltura.offsetLeft;
     scrollLeft = envoltura.scrollLeft;
     envoltura.style.cursor = 'grabbing';
-  });
+  };
 
-  envoltura.addEventListener('mouseleave', () => {
+  var terminarArrastre = function() {
     arrastrando = false;
     envoltura.style.cursor = 'grab';
-  });
+  };
 
-  envoltura.addEventListener('mouseup', () => {
-    arrastrando = false;
-    envoltura.style.cursor = 'grab';
-  });
-
-  envoltura.addEventListener('mousemove', (e) => {
+  var moverArrastre = function(e) {
     if (!arrastrando) return;
     e.preventDefault();
-    const x = e.pageX - envoltura.offsetLeft;
-    const distancia = (x - startX) * 1.5;
+    var x = ('touches' in e ? e.touches[0].pageX : e.pageX) - envoltura.offsetLeft;
+    var distancia = (x - startX) * 1.5;
     envoltura.scrollLeft = scrollLeft - distancia;
-  });
+  };
 
-  envoltura.addEventListener('wheel', (e) => {
-    const tieneDesbordamiento = envoltura.scrollWidth > envoltura.clientWidth;
+  envoltura.addEventListener('mousedown', empezarArrastre);
+  envoltura.addEventListener('mouseleave', terminarArrastre);
+  envoltura.addEventListener('mouseup', terminarArrastre);
+  envoltura.addEventListener('mousemove', moverArrastre);
+
+  envoltura.addEventListener('touchstart', empezarArrastre, { passive: true });
+  envoltura.addEventListener('touchend', terminarArrastre);
+  envoltura.addEventListener('touchcancel', terminarArrastre);
+  envoltura.addEventListener('touchmove', moverArrastre, { passive: false });
+
+  envoltura.addEventListener('wheel', function(e) {
+    var tieneDesbordamiento = envoltura.scrollWidth > envoltura.clientWidth;
     if (tieneDesbordamiento && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
       e.preventDefault();
       envoltura.scrollLeft += e.deltaY;
     }
   }, { passive: false });
 
-  // Update line progress
-  const barraLinea = document.getElementById('barraLineaTiempo');
+  var barraLinea = document.getElementById('barraLineaTiempo');
   if (barraLinea) {
-    const actualizarLinea = () => {
-      const maxScroll = pista.scrollWidth - envoltura.clientWidth;
-      const progreso = maxScroll > 0 ? (envoltura.scrollLeft / maxScroll) * 100 : 0;
-      const anchoTotal = pista.scrollWidth - 96;
+    var actualizarLinea = function() {
+      var maxScroll = pista.scrollWidth - envoltura.clientWidth;
+      var progreso = maxScroll > 0 ? (envoltura.scrollLeft / maxScroll) * 100 : 0;
+      var anchoTotal = pista.scrollWidth - 40;
       barraLinea.style.width = Math.min(progreso * (anchoTotal / 100), anchoTotal) + 'px';
     };
 
-    envoltura.addEventListener('scroll', () => {
+    envoltura.addEventListener('scroll', function() {
       requestAnimationFrame(actualizarLinea);
-    });
+    }, { passive: true });
     setTimeout(actualizarLinea, 100);
   }
 });

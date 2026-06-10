@@ -1,49 +1,60 @@
 (async function() {
   'use strict';
 
-  const pantallaCarga = document.getElementById('pantallaCarga');
-  const lineasCarga = document.querySelectorAll('.pantalla-carga__linea');
-  const cursorCarga = document.querySelector('.pantalla-carga__linea-cursor');
-  const textoCarga = document.getElementById('textoCarga');
-  const textoSaludo = document.getElementById('textoSaludo');
-  const mensajesCarga = ['_SISTEMA_INIT_', 'Bienvenido a mi espacio.'];
+  var isMobile = window.innerWidth < 768;
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var pantallaCarga = document.getElementById('pantallaCarga');
+  var lineasCarga = document.querySelectorAll('.pantalla-carga__linea');
+  var cursorCarga = document.querySelector('.pantalla-carga__linea-cursor');
+  var textoCarga = document.getElementById('textoCarga');
+  var textoSaludo = document.getElementById('textoSaludo');
+  var mensajesCarga = ['_SISTEMA_INIT_', 'Bienvenido a mi espacio.'];
 
   if (pantallaCarga) {
-    lineasCarga.forEach((linea) => {
-      const retraso = parseInt(linea.dataset.retraso) || 0;
-      setTimeout(() => linea.classList.add('visible'), retraso);
-    });
-
-    setTimeout(() => {
-      cursorCarga.classList.add('visible');
-      typeText(textoCarga, 'Sistema listo. Iniciando interfaz...', () => {
-        setTimeout(() => {
-          pantallaCarga.classList.add('oculta');
-          document.body.style.overflow = '';
-          if (textoSaludo) {
-            setTimeout(() => {
-              typeText(textoSaludo, mensajesCarga[0], () => {
-                setTimeout(() => {
-                  textoSaludo.textContent = '';
-                  typeText(textoSaludo, mensajesCarga[1]);
-                }, 1200);
-              });
-            }, 600);
-          }
-        }, 800);
+    if (isMobile || prefersReducedMotion) {
+      pantallaCarga.classList.add('oculta');
+      document.body.style.overflow = '';
+      if (textoSaludo) {
+        textoSaludo.textContent = mensajesCarga[1];
+      }
+    } else {
+      lineasCarga.forEach(function(linea) {
+        var retraso = parseInt(linea.dataset.retraso) || 0;
+        setTimeout(function() { linea.classList.add('visible'); }, retraso);
       });
-    }, 5200);
+
+      setTimeout(function() {
+        cursorCarga.classList.add('visible');
+        typeText(textoCarga, 'Sistema listo. Iniciando interfaz...', function() {
+          setTimeout(function() {
+            pantallaCarga.classList.add('oculta');
+            document.body.style.overflow = '';
+            if (textoSaludo) {
+              setTimeout(function() {
+                typeText(textoSaludo, mensajesCarga[0], function() {
+                  setTimeout(function() {
+                    textoSaludo.textContent = '';
+                    typeText(textoSaludo, mensajesCarga[1]);
+                  }, 1200);
+                });
+              }, 600);
+            }
+          }, 800);
+        });
+      }, isMobile ? 1200 : 5200);
+    }
   }
 
   function typeText(el, texto, callback) {
     if (!el) return;
-    let i = 0;
+    var i = 0;
     el.textContent = '';
     function tick() {
       if (i < texto.length) {
         el.textContent += texto.charAt(i);
         i++;
-        requestAnimationFrame(() => setTimeout(tick, 25 + Math.random() * 15));
+        requestAnimationFrame(function() { setTimeout(tick, 25 + Math.random() * 15); });
       } else if (callback) {
         callback();
       }
@@ -53,30 +64,28 @@
 
   window.dispatchEvent(new Event('datosCargados'));
 
-  const roles = document.querySelectorAll('.inicio__rol');
+  var roles = document.querySelectorAll('.inicio__rol');
   if (roles.length > 1) {
-    let indiceRol = 0;
-    setInterval(() => {
-      roles.forEach(r => r.classList.remove('activo'));
+    var indiceRol = 0;
+    setInterval(function() {
+      roles.forEach(function(r) { r.classList.remove('activo'); });
       indiceRol = (indiceRol + 1) % roles.length;
       roles[indiceRol].classList.add('activo');
     }, 3000);
   }
 
-  const valorPing = document.getElementById('valorPing');
+  var valorPing = document.getElementById('valorPing');
   if (valorPing) {
-    setInterval(() => valorPing.textContent = Math.floor(Math.random() * 15 + 2), 2000);
+    setInterval(function() { valorPing.textContent = Math.floor(Math.random() * 15 + 2); }, 2000);
   }
 
-  const textoSobreMi = document.getElementById('textoSobreMi');
+  var textoSobreMi = document.getElementById('textoSobreMi');
   if (textoSobreMi) {
-    const observadorSobreMi = new IntersectionObserver((entradas) => {
-      entradas.forEach(entrada => {
+    var observadorSobreMi = new IntersectionObserver(function(entradas) {
+      entradas.forEach(function(entrada) {
         if (entrada.isIntersecting) {
-          const texto = textoSobreMi.textContent;
           if (!textoSobreMi.dataset.tipeado) {
             textoSobreMi.dataset.tipeado = 'true';
-            typeText(textoSobreMi, texto);
           }
           observadorSobreMi.unobserve(entrada.target);
         }
@@ -85,12 +94,12 @@
     observadorSobreMi.observe(textoSobreMi);
   }
 
-  const numerosEstadisticas = document.querySelectorAll('.sobre-mi__estat-numero');
-  const observadorEstadisticas = new IntersectionObserver((entradas) => {
-    entradas.forEach(entrada => {
+  var numerosEstadisticas = document.querySelectorAll('.sobre-mi__estat-numero');
+  var observadorEstadisticas = new IntersectionObserver(function(entradas) {
+    entradas.forEach(function(entrada) {
       if (entrada.isIntersecting) {
-        const el = entrada.target;
-        const objetivo = parseInt(el.textContent);
+        var el = entrada.target;
+        var objetivo = parseInt(el.textContent);
         if (!el.dataset.contado) {
           el.dataset.contado = 'true';
           animarContador(el, objetivo);
@@ -99,11 +108,11 @@
       }
     });
   }, { threshold: 0.5 });
-  numerosEstadisticas.forEach(el => observadorEstadisticas.observe(el));
+  numerosEstadisticas.forEach(function(el) { observadorEstadisticas.observe(el); });
 
   function animarContador(el, objetivo) {
-    let actual = 0;
-    const paso = Math.max(1, Math.ceil(objetivo / 40));
+    var actual = 0;
+    var paso = Math.max(1, Math.ceil(objetivo / 30));
     function tick() {
       actual += paso;
       if (actual >= objetivo) {
@@ -111,13 +120,13 @@
         return;
       }
       el.textContent = actual;
-      requestAnimationFrame(() => setTimeout(tick, 40));
+      requestAnimationFrame(function() { setTimeout(tick, 40); });
     }
     tick();
   }
 
-  const observadorAnimacion = new IntersectionObserver((entradas) => {
-    entradas.forEach(entrada => {
+  var observadorAnimacion = new IntersectionObserver(function(entradas) {
+    entradas.forEach(function(entrada) {
       if (entrada.isIntersecting) {
         entrada.target.classList.add('visible');
         observadorAnimacion.unobserve(entrada.target);
@@ -125,73 +134,83 @@
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-  document.querySelectorAll('.animar-aparicion').forEach(el => observadorAnimacion.observe(el));
+  document.querySelectorAll('.animar-aparicion').forEach(function(el) { observadorAnimacion.observe(el); });
 
-  const secciones = document.querySelectorAll('.seccion');
-  const enlacesNav = document.querySelectorAll('.barra-navegacion__enlace');
-  const barraNavegacion = document.getElementById('barraNavegacion');
-  let navTicking = false;
+  var secciones = document.querySelectorAll('.seccion');
+  var enlacesNav = document.querySelectorAll('.barra-navegacion__enlace');
+  var barraNavegacion = document.getElementById('barraNavegacion');
+  var navTicking = false;
 
   function actualizarSeccionActiva() {
-    let actual = 'inicio';
-    secciones.forEach(seccion => {
+    var actual = 'inicio';
+    secciones.forEach(function(seccion) {
       if (seccion.getBoundingClientRect().top <= 200) actual = seccion.id;
     });
-    enlacesNav.forEach(enlace => enlace.classList.toggle('activo', enlace.dataset.seccion === actual));
+    enlacesNav.forEach(function(enlace) { enlace.classList.toggle('activo', enlace.dataset.seccion === actual); });
     navTicking = false;
   }
 
-  window.addEventListener('scroll', () => {
-    barraNavegacion.classList.toggle('scrolled', window.scrollY > 100);
+  window.addEventListener('scroll', function() {
+    barraNavegacion.classList.toggle('scrolled', window.scrollY > 80);
     if (!navTicking) { requestAnimationFrame(actualizarSeccionActiva); navTicking = true; }
-  });
+  }, { passive: true });
 
-  const botonMenu = document.getElementById('botonMenu');
-  const enlacesContenedor = document.getElementById('enlacesNavegacion');
+  var botonMenu = document.getElementById('botonMenu');
+  var enlacesContenedor = document.getElementById('enlacesNavegacion');
   if (botonMenu) {
-    botonMenu.addEventListener('click', () => enlacesContenedor.classList.toggle('abierto'));
-    enlacesNav.forEach(enlace => enlace.addEventListener('click', () => enlacesContenedor.classList.remove('abierto')));
+    botonMenu.addEventListener('click', function() {
+      enlacesContenedor.classList.toggle('abierto');
+      botonMenu.classList.toggle('abierto');
+      document.body.style.overflow = enlacesContenedor.classList.contains('abierto') ? 'hidden' : '';
+    });
+    enlacesNav.forEach(function(enlace) {
+      enlace.addEventListener('click', function() {
+        enlacesContenedor.classList.remove('abierto');
+        botonMenu.classList.remove('abierto');
+        document.body.style.overflow = '';
+      });
+    });
   }
 
-  const barraProgreso = document.getElementById('barraProgreso');
+  var barraProgreso = document.getElementById('barraProgreso');
   if (barraProgreso) {
-    let pTicking = false;
-    window.addEventListener('scroll', () => {
+    var pTicking = false;
+    window.addEventListener('scroll', function() {
       if (!pTicking) {
-        requestAnimationFrame(() => {
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        requestAnimationFrame(function() {
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
           barraProgreso.style.width = (docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0) + '%';
           pTicking = false;
         });
         pTicking = true;
       }
-    });
+    }, { passive: true });
   }
 
-  const botonVolverArriba = document.getElementById('botonVolverArriba');
+  var botonVolverArriba = document.getElementById('botonVolverArriba');
   if (botonVolverArriba) {
-    let bTicking = false;
-    window.addEventListener('scroll', () => {
+    var bTicking = false;
+    window.addEventListener('scroll', function() {
       if (!bTicking) {
-        requestAnimationFrame(() => {
-          botonVolverArriba.classList.toggle('visible', window.scrollY > 500);
+        requestAnimationFrame(function() {
+          botonVolverArriba.classList.toggle('visible', window.scrollY > 400);
           bTicking = false;
         });
         bTicking = true;
       }
-    });
-    botonVolverArriba.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }, { passive: true });
+    botonVolverArriba.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
   }
 
-  let atajosVisibles = false;
-  const pistaAtajos = document.getElementById('pistaAtajos');
-  document.addEventListener('keydown', (e) => {
+  var atajosVisibles = false;
+  var pistaAtajos = document.getElementById('pistaAtajos');
+  document.addEventListener('keydown', function(e) {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-    const tecla = parseInt(e.key);
+    var tecla = parseInt(e.key);
     if (tecla >= 1 && tecla <= 7) {
       e.preventDefault();
-      const mapa = ['inicio', 'sobre-mi', 'habilidades', 'experiencia', 'proyectos', 'educacion', 'contacto'];
-      const objetivo = document.getElementById(mapa[tecla - 1]);
+      var mapa = ['inicio', 'sobre-mi', 'habilidades', 'experiencia', 'proyectos', 'educacion', 'contacto'];
+      var objetivo = document.getElementById(mapa[tecla - 1]);
       if (objetivo) objetivo.scrollIntoView({ behavior: 'smooth' });
     }
     if (e.key === '?' && pistaAtajos) {
@@ -200,16 +219,16 @@
     }
   });
 
-  const formularioContacto = document.getElementById('formularioContacto');
-  const estadoFormulario = document.getElementById('estadoFormulario');
-  const botonEnviar = document.getElementById('botonEnviar');
+  var formularioContacto = document.getElementById('formularioContacto');
+  var estadoFormulario = document.getElementById('estadoFormulario');
+  var botonEnviar = document.getElementById('botonEnviar');
 
   if (formularioContacto) {
-    formularioContacto.addEventListener('submit', async (e) => {
+    formularioContacto.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const nombre = document.getElementById('formNombre').value.trim();
-      const email = document.getElementById('formEmail').value.trim();
-      const mensaje = document.getElementById('formMensaje').value.trim();
+      var nombre = document.getElementById('formNombre').value.trim();
+      var email = document.getElementById('formEmail').value.trim();
+      var mensaje = document.getElementById('formMensaje').value.trim();
 
       if (!nombre || !email || !mensaje) {
         estadoFormulario.textContent = '! Todos los campos son obligatorios';
@@ -223,10 +242,10 @@
       estadoFormulario.style.color = 'var(--neon)';
 
       try {
-        const respuesta = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        var respuesta = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: nombre, email, message: mensaje })
+          body: JSON.stringify({ name: nombre, email: email, message: mensaje })
         });
 
         if (respuesta.ok) {
@@ -244,30 +263,29 @@
 
       botonEnviar.querySelector('.formulario__enviar-texto').style.display = 'inline';
       botonEnviar.querySelector('.formulario__enviar-carga').style.display = 'none';
-      setTimeout(() => estadoFormulario.textContent = '', 5000);
+      setTimeout(function() { estadoFormulario.textContent = ''; }, 5000);
     });
   }
 
-  /* === FUNCIONES GLOBALES PARA MODAL === */
   window.abrirProyecto = function(proyecto) {
-    const modal = document.getElementById('modalProyecto');
+    var modal = document.getElementById('modalProyecto');
     if (!modal) return;
 
     document.getElementById('tituloModal').textContent = proyecto.title;
     document.getElementById('descripcionModal').textContent = proyecto.description;
 
-    const techModal = document.getElementById('tecnologiasModal');
+    var techModal = document.getElementById('tecnologiasModal');
     techModal.innerHTML = '';
     proyecto.tech.forEach(function(t) {
-      const span = document.createElement('span');
+      var span = document.createElement('span');
       span.textContent = t;
       techModal.appendChild(span);
     });
 
-    const destacados = document.getElementById('destacadosModal');
+    var destacados = document.getElementById('destacadosModal');
     destacados.innerHTML = '';
     proyecto.highlights.forEach(function(h) {
-      const li = document.createElement('li');
+      var li = document.createElement('li');
       li.textContent = h;
       destacados.appendChild(li);
     });
@@ -278,7 +296,7 @@
   };
 
   window.cerrarModal = function() {
-    const modal = document.getElementById('modalProyecto');
+    var modal = document.getElementById('modalProyecto');
     if (!modal) return;
     modal.classList.remove('activa');
     document.body.style.overflow = '';
@@ -287,4 +305,9 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') window.cerrarModal();
   });
+
+  var modalCapa = document.getElementById('cierreCapaModal');
+  if (modalCapa) {
+    modalCapa.addEventListener('click', window.cerrarModal);
+  }
 })();
