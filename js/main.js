@@ -207,9 +207,9 @@
   document.addEventListener('keydown', function(e) {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     var tecla = parseInt(e.key);
-    if (tecla >= 1 && tecla <= 7) {
+    if (tecla >= 1 && tecla <= 5) {
       e.preventDefault();
-      var mapa = ['inicio', 'sobre-mi', 'habilidades', 'experiencia', 'proyectos', 'educacion', 'contacto'];
+      var mapa = ['inicio', 'sobre-mi', 'habilidades', 'proyectos', 'contacto'];
       var objetivo = document.getElementById(mapa[tecla - 1]);
       if (objetivo) objetivo.scrollIntoView({ behavior: 'smooth' });
     }
