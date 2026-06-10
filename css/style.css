@@ -55,6 +55,10 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   overscroll-behavior: none;
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 ::-webkit-scrollbar { width: 6px; }
@@ -68,6 +72,7 @@ a { color: var(--neon); text-decoration: none; transition: color var(--transicio
 a:hover { color: var(--texto-brillante); }
 
 img { max-width: 100%; height: auto; display: block; }
+svg { max-width: 100%; }
 
 .flex-centro { display: flex; align-items: center; justify-content: center; }
 .flex-centro-v { display: flex; align-items: center; }
@@ -124,7 +129,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .animar-aparicion.visible { opacity: 1; transform: translateY(0); }
 
-.contenedor { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.contenedor { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
 .seccion {
   padding: 100px 0;
   position: relative;
@@ -368,6 +373,7 @@ button:hover .icono-svg,
 .pantalla-carga.oculta { opacity: 0; visibility: hidden; pointer-events: none; }
 .pantalla-carga__contenido {
   max-width: 600px;
+  width: 100%;
   padding: 24px;
   font-family: var(--fuente-mono);
   font-size: 0.85rem;
@@ -444,6 +450,7 @@ button:hover .icono-svg,
   text-align: center;
   padding: 0 20px;
   max-width: 800px;
+  width: 100%;
 }
 
 .inicio__saludo {
@@ -585,6 +592,7 @@ button:hover .icono-svg,
   padding: 6px 16px;
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.05);
+  max-width: 100%;
 }
 .inicio__estado-punto {
   width: 8px;
@@ -670,8 +678,8 @@ button:hover .icono-svg,
 
 .sobre-mi__cuadricula {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1fr;
+  gap: 32px;
   align-items: start;
 }
 .sobre-mi__texto p {
@@ -761,7 +769,7 @@ button:hover .icono-svg,
 .terminal__linea--cursor { margin-top: 12px; }
 .terminal__prompt { color: var(--neon); font-weight: 600; margin-right: 6px; }
 .terminal__comando { color: var(--texto-brillante); }
-.terminal__salida { color: var(--texto); white-space: pre; }
+.terminal__salida { color: var(--texto); white-space: pre-wrap; word-break: break-word; }
 .terminal__clave { color: var(--secundario); display: inline-block; min-width: 80px; }
 .terminal__enlace {
   color: var(--neon) !important;
@@ -782,6 +790,7 @@ button:hover .icono-svg,
 }
 
 .habilidades__grid-estatico {
+  display: grid;
   align-items: start;
   gap: 32px;
   margin-bottom: 40px;
@@ -1258,7 +1267,7 @@ button:hover .icono-svg,
   color: var(--texto-tenue);
 }
 
-.contacto__cuadricula { gap: 24px; align-items: start; }
+.contacto__cuadricula { display: grid; gap: 24px; align-items: start; }
 
 .contacto__formulario { font-family: var(--fuente-mono); }
 .formulario__grupo { gap: 10px; margin-bottom: 20px; }
@@ -1465,10 +1474,12 @@ a.contacto__valor:hover { color: var(--neon); text-shadow: var(--neon-resplandor
   font-weight: 600;
 }
 
+.grid-2-cols { display: grid; grid-template-columns: 1fr; gap: 32px; }
+
 @media (min-width: 769px) {
   .seccion { padding: 120px 0; }
   .contenedor { padding: 0 32px; }
-  .grid-2-cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .grid-2-cols { grid-template-columns: repeat(2, 1fr); gap: 40px; }
 
   .barra-navegacion { padding: 18px 40px; }
   .barra-navegacion.scrolled { padding: 12px 40px; }
@@ -1482,11 +1493,10 @@ a.contacto__valor:hover { color: var(--neon); text-shadow: var(--neon-resplandor
 
   .linea-tiempo__nodo { min-width: 380px; max-width: 380px; }
   .conocimientos__cuadricula { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .sobre-mi__cuadricula { grid-template-columns: 1fr 1fr; gap: 60px; }
 }
 
 @media (max-width: 768px) {
-  .grid-2-cols { display: grid; grid-template-columns: 1fr; gap: 32px; }
-
   .barra-navegacion__enlaces {
     display: flex;
     position: fixed;
@@ -1538,8 +1548,6 @@ a.contacto__valor:hover { color: var(--neon); text-shadow: var(--neon-resplandor
 
   .linea-tiempo__tarjeta { margin-top: 48px; padding: 20px; }
   .linea-tiempo__nodo { min-width: 280px; max-width: 280px; }
-
-  .sobre-mi__cuadricula { grid-template-columns: 1fr; gap: 32px; }
   .proyectos__cuadricula { gap: 16px; }
   .proyecto__tarjeta { height: 320px; }
 
